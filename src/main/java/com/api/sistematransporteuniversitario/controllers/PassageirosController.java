@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -49,6 +51,49 @@ public class PassageirosController {
     @GetMapping
     public ResponseEntity<List<PassageirosModel>> getTodosPassageiros() {
         return ResponseEntity.status(HttpStatus.OK).body(passageirosService.buscar());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getUmPassageiro(@PathVariable(value = "id") UUID id) {
+        Optional<PassageirosModel> passageirosModelOptional = passageirosService.findById(id);
+
+        if (!passageirosModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Passageiro não encontrado.");
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(passageirosModelOptional.get());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deletePassageiro(@PathVariable(value = "id") UUID id) {
+        Optional<PassageirosModel> passageirosModelOptional = passageirosService.findById(id);
+
+        if (!passageirosModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Passageiro não existe");
+        }
+
+        passageirosService.delete(passageirosModelOptional.get());
+
+        return ResponseEntity.status(HttpStatus.OK).body("Passageiro deletado com sucesso.");
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updatePassageiro(@PathVariable(value = "id") UUID id, @RequestBody @Valid PassageirosDto passageirosDto) {
+        Optional<PassageirosModel> passageirosModelOptional = passageirosService.findById(id);
+
+        if (!passageirosModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Passageiro não existe");
+        }
+
+        PassageirosModel passageirosModel = passageirosModelOptional.get();
+        passageirosModel.setPaxNome(passageirosDto.getPaxNome());
+        passageirosModel.setPaxSobrenome(passageirosDto.getPaxSobrenome());
+        passageirosModel.setPaxCPF(passageirosDto.getPaxCPF());
+        passageirosModel.setPaxRG(passageirosDto.getPaxRG());
+        passageirosModel.setPaxLoginEmail(passageirosDto.getPaxLoginEmail());
+        passageirosModel.setPaxLoginSenha(passageirosDto.getPaxLoginSenha());
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(passageirosService.salvar(passageirosModel));
     }
 
 }

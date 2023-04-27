@@ -6,6 +6,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class PassageirosService {
@@ -35,5 +37,16 @@ public class PassageirosService {
 
     public boolean existsByPaxLoginEmail(String paxLoginEmail) {
         return passageirosRepository.existsByPaxLoginEmail(paxLoginEmail);
+    }
+
+    public Optional<PassageirosModel> findById(UUID id) {
+
+        return passageirosRepository.findById(id);
+    }
+
+    @Transactional
+    public void delete(PassageirosModel passageirosModel) {
+
+        passageirosRepository.delete(passageirosModel);
     }
 }
