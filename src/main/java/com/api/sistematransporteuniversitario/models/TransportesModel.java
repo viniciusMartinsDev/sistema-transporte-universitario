@@ -27,4 +27,40 @@ public class TransportesModel implements Serializable {
 
     @Column(name = "TRANS_RENAVAM", nullable = false, length = 45)
     private String transRenavam;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public ModelosModel getFkModelo() {
+        return fkModelo;
+    }
+
+    public void setFkModelo(ModelosModel fkModelo) {
+        this.fkModelo = fkModelo;
+    }
+
+    public PassageirosModel getFkPaxRepre() {
+        return fkPaxRepre;
+    }
+
+    public void setFkPaxRepre(PassageirosModel fkPaxRepre) {
+        this.fkPaxRepre = fkPaxRepre;
+    }
+
+    public String getTransPlaca() {
+        return transPlaca;
+    }
+
+    public void setTransPlaca(String transPlaca) {
+        this.transPlaca = transPlaca;
+    }
+
+    public String getTransRenavam() {
+        return transRenavam;
+    }
+
+    public void setTransRenavam(String transRenavam) {
+        this.transRenavam = transRenavam;
+    }
 }

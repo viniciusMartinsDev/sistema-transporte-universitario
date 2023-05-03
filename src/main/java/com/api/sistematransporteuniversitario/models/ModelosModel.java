@@ -39,4 +39,28 @@ public class ModelosModel implements Serializable {
     public void setFkMarca(MarcasModel fkMarca) {
         this.fkMarca = fkMarca;
     }
+
+    public String getModNome() {
+        return modNome;
+    }
+
+    public void setModNome(String modNome) {
+        this.modNome = modNome;
+    }
+
+    public String getModAno() {
+        return modAno;
+    }
+
+    public void setModAno(String modAno) {
+        this.modAno = modAno;
+    }
+
+    public List<TransportesModel> getTransportesModelList() {
+        return transportesModelList;
+    }
+
+    public void setTransportesModelList(List<TransportesModel> transportesModelList) {
+        this.transportesModelList = transportesModelList;
+    }
 }

@@ -88,4 +88,12 @@ public class PassageirosModel implements Serializable {
     public void setPaxLoginSenha(String paxLoginSenha) {
         this.paxLoginSenha = paxLoginSenha;
     }
+
+    public List<TransportesModel> getTransportesModelList() {
+        return transportesModelList;
+    }
+
+    public void setTransportesModelList(List<TransportesModel> transportesModelList) {
+        this.transportesModelList = transportesModelList;
+    }
 }

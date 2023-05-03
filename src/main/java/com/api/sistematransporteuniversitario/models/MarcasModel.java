@@ -20,4 +20,24 @@ public class MarcasModel implements Serializable {
 
     @Column(name = "M_NOME", nullable = false, length = 45)
     private String marcaNome;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public List<ModelosModel> getModelosModelList() {
+        return modelosModelList;
+    }
+
+    public void setModelosModelList(List<ModelosModel> modelosModelList) {
+        this.modelosModelList = modelosModelList;
+    }
+
+    public String getMarcaNome() {
+        return marcaNome;
+    }
+
+    public void setMarcaNome(String marcaNome) {
+        this.marcaNome = marcaNome;
+    }
 }
