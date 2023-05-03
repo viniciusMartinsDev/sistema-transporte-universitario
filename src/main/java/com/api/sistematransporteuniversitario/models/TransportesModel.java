@@ -32,6 +32,9 @@ public class TransportesModel implements Serializable {
     @OneToMany(mappedBy = "fkTrans")
     private List<SolicitacaoRegistroModel> solicitacaoRegistroModels;
 
+    @OneToMany(mappedBy = "fkTrans")
+    private List<ListaControleModel> listaControleModelList;
+
     public UUID getId() {
         return id;
     }
@@ -74,5 +77,13 @@ public class TransportesModel implements Serializable {
 
     public void setSolicitacaoRegistroModels(List<SolicitacaoRegistroModel> solicitacaoRegistroModels) {
         this.solicitacaoRegistroModels = solicitacaoRegistroModels;
+    }
+
+    public List<ListaControleModel> getListaControleModelList() {
+        return listaControleModelList;
+    }
+
+    public void setListaControleModelList(List<ListaControleModel> listaControleModelList) {
+        this.listaControleModelList = listaControleModelList;
     }
 }
