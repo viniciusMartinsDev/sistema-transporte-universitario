@@ -3,6 +3,7 @@ package com.api.sistematransporteuniversitario.models;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,6 +24,9 @@ public class ModelosModel implements Serializable {
 
     @Column(name = "MOD_ANO", nullable = false, length = 45)
     private String modAno;
+
+    @OneToMany(mappedBy = "fkModelo")
+    private List<TransportesModel> transportesModelList;
 
     public UUID getId() {
         return id;

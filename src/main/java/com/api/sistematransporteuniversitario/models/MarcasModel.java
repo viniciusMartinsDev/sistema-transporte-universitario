@@ -16,7 +16,7 @@ public class MarcasModel implements Serializable {
     private UUID id;
 
     @OneToMany(mappedBy = "fkMarca")
-    private List<ModelosModel> modelos;
+    private List<ModelosModel> modelosModelList;
 
     @Column(name = "M_NOME", nullable = false, length = 45)
     private String marcaNome;

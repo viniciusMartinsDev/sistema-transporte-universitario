@@ -3,6 +3,7 @@ package com.api.sistematransporteuniversitario.models;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -31,6 +32,10 @@ public class PassageirosModel implements Serializable {
 
     @Column(name = "PAX_LOGIN_SENHA", nullable = false, length = 45)
     private String paxLoginSenha;
+
+    @OneToMany(mappedBy = "fkPaxRepre")
+    private List<TransportesModel> transportesModelList;
+
 
     public UUID getId() {
         return id;
