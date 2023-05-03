@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "MARCAS")
-public class Marcas implements Serializable {
+public class MarcasModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -16,7 +16,7 @@ public class Marcas implements Serializable {
     private UUID id;
 
     @OneToMany(mappedBy = "fkMarca")
-    private List<Modelos> modelos;
+    private List<ModelosModel> modelos;
 
     @Column(name = "M_NOME", nullable = false, length = 45)
     private String marcaNome;

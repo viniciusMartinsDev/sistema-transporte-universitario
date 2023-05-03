@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "MODELOS")
-public class Modelos implements Serializable {
+public class ModelosModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -16,7 +16,7 @@ public class Modelos implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "FK_MARCA")
-    private Marcas fkMarca;
+    private MarcasModel fkMarca;
 
     @Column(name = "MOD_NOME", nullable = false, length = 45)
     private String modNome;
@@ -28,11 +28,11 @@ public class Modelos implements Serializable {
         return id;
     }
 
-    public Marcas getFkMarca() {
+    public MarcasModel getFkMarca() {
         return fkMarca;
     }
 
-    public void setFkMarca(Marcas fkMarca) {
+    public void setFkMarca(MarcasModel fkMarca) {
         this.fkMarca = fkMarca;
     }
 }
