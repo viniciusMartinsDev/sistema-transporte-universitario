@@ -3,6 +3,7 @@ package com.api.sistematransporteuniversitario.models;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -27,6 +28,9 @@ public class TransportesModel implements Serializable {
 
     @Column(name = "TRANS_RENAVAM", nullable = false, length = 45)
     private String transRenavam;
+
+    @OneToMany(mappedBy = "fkTrans")
+    private List<SolicitacaoRegistroModel> solicitacaoRegistroModels;
 
     public UUID getId() {
         return id;
@@ -62,5 +66,13 @@ public class TransportesModel implements Serializable {
 
     public void setTransRenavam(String transRenavam) {
         this.transRenavam = transRenavam;
+    }
+
+    public List<SolicitacaoRegistroModel> getSolicitacaoRegistroModels() {
+        return solicitacaoRegistroModels;
+    }
+
+    public void setSolicitacaoRegistroModels(List<SolicitacaoRegistroModel> solicitacaoRegistroModels) {
+        this.solicitacaoRegistroModels = solicitacaoRegistroModels;
     }
 }

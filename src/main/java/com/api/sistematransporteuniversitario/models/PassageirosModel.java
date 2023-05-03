@@ -36,6 +36,9 @@ public class PassageirosModel implements Serializable {
     @OneToMany(mappedBy = "fkPaxRepre")
     private List<TransportesModel> transportesModelList;
 
+    @OneToMany(mappedBy = "fkPax")
+    private List<SolicitacaoRegistroModel> solicitacaoRegistroModels;
+
 
     public UUID getId() {
         return id;
@@ -95,5 +98,13 @@ public class PassageirosModel implements Serializable {
 
     public void setTransportesModelList(List<TransportesModel> transportesModelList) {
         this.transportesModelList = transportesModelList;
+    }
+
+    public List<SolicitacaoRegistroModel> getSolicitacaoRegistroModels() {
+        return solicitacaoRegistroModels;
+    }
+
+    public void setSolicitacaoRegistroModels(List<SolicitacaoRegistroModel> solicitacaoRegistroModels) {
+        this.solicitacaoRegistroModels = solicitacaoRegistroModels;
     }
 }
