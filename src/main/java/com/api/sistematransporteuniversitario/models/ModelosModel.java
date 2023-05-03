@@ -18,6 +18,12 @@ public class Modelos implements Serializable {
     @JoinColumn(name = "FK_MARCA")
     private Marcas fkMarca;
 
+    @Column(name = "MOD_NOME", nullable = false, length = 45)
+    private String modNome;
+
+    @Column(name = "MOD_ANO", nullable = false, length = 45)
+    private String modAno;
+
     public UUID getId() {
         return id;
     }
